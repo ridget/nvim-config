@@ -1,9 +1,9 @@
 -- set leader to space
 local map = vim.api.nvim_set_keymap
 local silent = { silent = true, noremap = true }
-map("", "<Space>", "<Nop>", silent)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+map('', '<Space>', '<Nop>', silent)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- use nerd fonts
 vim.g.have_nerd_font = true
@@ -16,7 +16,6 @@ vim.opt.relativenumber = true
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
-
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -48,7 +47,6 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -63,7 +61,6 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
 
 -- [[ Basic Keymaps ]]
 --
@@ -92,6 +89,9 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.api.nvim_set_keymap('n', '^S', '<cmd>:w<cr>', { noremap = true })
+vim.api.nvim_set_keymap('i', '^S', '<cmd>:w<cr>', { noremap = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -130,7 +130,30 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 require('lazy').setup({
-  	'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-	{ import = 'plugins' },
-
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  { import = 'plugins' },
+}, {
+  ui = {
+    -- If you are using a Nerd Font: set icons to an empty table which will use the
+    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
 })
+
+-- doesnt quite work as well if I shove it in oil.lua's config function
+-- alternative is netrw hackery
+require('oil').setup()
