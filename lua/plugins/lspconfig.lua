@@ -167,6 +167,12 @@ return {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
+      html = {},
+      cssls = {},
+      tailwindcss = {},
+      emmet_ls = {},
+      eslint = {},
+      ts_ls = {},
       solargraph = {
         mason = false,
         cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
