@@ -177,12 +177,19 @@ return {
         mason = false,
         cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
         filetypes = { 'ruby' },
+        init_options = {
+          formatting = false,
+        },
       },
       standardrb = {
         mason = false,
         cmd = { 'bundle', 'exec', 'standardrb', '--lsp' },
         filetypes = { 'ruby' },
       },
+      elixirls = {
+        cmd = { '/Users/ridget/.config/elixir_lsp/elixir-ls-v0/language_server.sh' },
+      },
+
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
