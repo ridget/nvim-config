@@ -180,6 +180,13 @@ return {
         init_options = {
           formatting = false,
         },
+        settings = {
+          solargraph = {
+            diagnostics = false,
+            completion = true,
+            formatting = false,
+          },
+        },
       },
       standardrb = {
         mason = false,
